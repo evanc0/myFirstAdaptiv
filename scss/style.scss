@@ -5,6 +5,14 @@ body {
     font-family: Lato;
 }
 
+body.active {
+    overflow: hidden;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
 .main {
     position: relative;
 }
@@ -27,8 +35,7 @@ body {
 
 .top__body {
     height: 800px;
-    padding-top: 35px;
-    background-image: url('/12.2022/adpt/adapt/img/bg.png');
+    background-image: url('../img/bg.png');
     background-position: center;
     @media (max-width: 700px) {
         height: 700px;
@@ -39,13 +46,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 35px 0px;
+    background-color: rgba(173, 173, 173, 0.4);
     @media (max-width: 700px) {
-        justify-content: flex-start;
-        padding: 0px 35px;
+        justify-content: space-between;
+        padding: 20px 20px;
     }
 }
 
-.top__links {}
+.top__links {
+    @media (max-width: 700px) {
+        display: none;
+    }
+}
+
+.top__link {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #4d4959;
+}
 
 .top__links a {
     font-size: 13px;
@@ -57,8 +78,6 @@ body {
         display: none;
     }
 }
-
-.top__link {}
 
 .link_1 {
     margin-right: 76px;
@@ -77,6 +96,95 @@ body {
     @media (max-width: 700px) {
         padding: 0px;
     }
+}
+
+.top__image {
+    @media (max-width: 700px) {
+        max-width: 70px;
+    }
+}
+
+.top__burger {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    z-index: 3;
+    overflow: hidden;
+    display: none;
+    @media (max-width: 700px) {
+        display: block;
+    }
+}
+
+.top__burger.active {
+    position: fixed;
+    right: 20px;
+}
+
+.top__burger span {
+    width: 40px;
+    height: 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #64c29e;
+    transition: all 0.5s;
+}
+
+.top__burger span:nth-of-type(2) {
+    top: calc(50% - 8px);
+}
+
+.top__burger span:nth-of-type(3) {
+    top: calc(50% + 8px);
+}
+
+.top__burger.active span:first-of-type {
+    transform: translateX(100%);
+}
+
+.top__burger.active span:nth-of-type(2) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.top__burger.active span:nth-of-type(3) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.top__menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background-color: rgb(208, 214, 213);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+    display: none;
+    z-index: 1;
+    @media (max-width: 700px) {
+        display: flex;
+    }
+    a {
+        list-style-type: none;
+    }
+}
+
+.top__wrapper_menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 100px;
+}
+
+.top__menu.active {
+    transform: translateX(100%);
 }
 
 .bike__body {
@@ -320,6 +428,7 @@ body {
 
 .social__body {
     max-width: 1600px;
+    background-color: #f7f7f7;
 }
 
 .slider-twitter {}
@@ -401,14 +510,14 @@ body {
 }
 
 .image_shop_small {
+    img {
+        width: 100%;
+    }
     @media (max-width: 1600px) {
-        width: 400%;
-        height: 400%;
-        ;
+        width: 50%;
     }
     @media (max-width: 540px) {
         width: 100%;
-        height: 100%;
     }
 }
 
@@ -420,9 +529,11 @@ body {
 }
 
 .image_shop_height {
+    img {
+        width: 100%;
+    }
     @media (max-width: 1600px) {
-        width: 200%;
-        height: 200%;
+        width: 50%;
     }
     @media (max-width: 540px) {
         width: 100%;
@@ -565,25 +676,30 @@ body {
 }
 
 .footer__column_1 {
-    width: 235px;
+    width: 33.3%;
     display: flex;
     flex-direction: column;
     column-gap: 2px;
 }
 
 .footer__column_2 {
-    width: 235px;
+    width: 33.3%;
     display: flex;
     column-gap: 15px;
     justify-content: center;
 }
 
 .footer__column_3 {
-    width: 235px;
+    width: 33.3%;
     display: flex;
     column-gap: 9px;
     white-space: nowrap;
     text-align: center;
+    justify-content: flex-end;
+    align-items: center;
+    @media (max-width: 700px) {
+        justify-content: center;
+    }
 }
 
 .footer__text_big {
@@ -598,4 +714,18 @@ body {
     font-weight: 400;
     font-style: italic;
     color: #848789;
+}
+
+.footer__column {
+    @media (max-width: 700px) {
+        width: 100%;
+        padding: 0px 20px;
+        text-align: center;
+        .footer__text_big {
+            font-size: 20px;
+        }
+        .footer__text_small {
+            font-size: 17px;
+        }
+    }
 }
